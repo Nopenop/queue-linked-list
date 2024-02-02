@@ -22,6 +22,7 @@ template<typename T>
 Queue<T>& Queue<T>::operator=(const Queue<T>& other){
     clear();
     data = new DLList<T>;
+    *data = *other.data;
     return *this;
 }
 
@@ -38,7 +39,7 @@ void Queue<T>::clear(){
 
 template<typename T>
 void Queue<T>::dequeue(){
-    std::cout << data->front() << std::endl;
+    data->pop_front();
 }
 
 template<typename T>

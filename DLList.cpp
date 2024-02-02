@@ -19,16 +19,20 @@ DLList<T>::DLList(const DLList<T>& other) {
     head->next = tail;
     tail->prev = head;
     DLLNode<T>* cur = other.head->next;
-    while(cur != other.tail){
+    while(cur != other.head){
         push_back(cur->data);
         cur = cur->next;
     }
 }
 template<typename T>
 DLList<T>& DLList<T>::operator=(const DLList<T>& other){
-    clear();
+    clearDelete();
+    head = new DLLNode<T>; //sentinel header node
+    tail = new DLLNode<T>;
+    head->next = tail;
+    tail->prev = head;
     DLLNode<T>* cur = other.head->next;
-    while(cur != other.tail){
+    while(cur != other.head){
         push_back(cur->data);
         cur = cur->next;
     }
